@@ -19,6 +19,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Lewo/Prawo: " + Input.GetAxis("Horizontal"));
         Debug.Log("Przod/Tyl: " + Input.GetAxis("Vertical"));
 
-        Debug.Log("Czy na ziemi? " + Input.GetAxis("Vertical"));
+        Debug.Log("Czy na ziemi? " + characterController.isGrounded);
     }
 }
