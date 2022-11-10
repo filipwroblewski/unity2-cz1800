@@ -20,10 +20,15 @@ public class PlayerController : MonoBehaviour
 
     void klawiatura()
     {
-        Debug.Log("Skok: " + Input.GetButton("Jump"));
+        /*Debug.Log("Skok: " + Input.GetButton("Jump"));
         Debug.Log("Lewo/Prawo: " + Input.GetAxis("Horizontal"));
         Debug.Log("Przod/Tyl: " + Input.GetAxis("Vertical"));
 
-        Debug.Log("Czy na ziemi? " + characterController.isGrounded);
+        Debug.Log("Czy na ziemi? " + characterController.isGrounded);*/
+
+        float ruchPrzodTyl = Input.GetAxis("Vertical");
+        float ruchLewoPrawo = Input.GetAxis("Horizontal");
+
+        Debug.Log(ruchPrzodTyl + " " + ruchLewoPrawo);
     }
 }
