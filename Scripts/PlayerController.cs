@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public CharacterController characterController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Skok: " + Input.GetButton("Jump"));
         Debug.Log("Lewo/Prawo: " + Input.GetAxis("Horizontal"));
         Debug.Log("Przod/Tyl: " + Input.GetAxis("Vertical"));
+
+        Debug.Log("Czy na ziemi? " + Input.GetAxis("Vertical"));
     }
 }
