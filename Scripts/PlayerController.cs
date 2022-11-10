@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        klawiatura();
+    }
+
+    void klawiatura()
+    {
         Debug.Log("Skok: " + Input.GetButton("Jump"));
         Debug.Log("Lewo/Prawo: " + Input.GetAxis("Horizontal"));
         Debug.Log("Przod/Tyl: " + Input.GetAxis("Vertical"));
