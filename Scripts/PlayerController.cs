@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
         float ruchPrzodTyl = Input.GetAxis("Vertical");
         float ruchLewoPrawo = Input.GetAxis("Horizontal");
 
-        Debug.Log(ruchPrzodTyl + " " + ruchLewoPrawo);
+        Vector3 ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
+        ruch = transform.position;
+        characterController.Move(ruch * Time.deltaTime);
+
+        //Debug.Log(ruch);
     }
 }
