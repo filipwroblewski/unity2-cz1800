@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController characterController;
 
+    float ruchPrzodTyl;
+    float ruchLewoPrawo;
+    Vector3 ruch;
+
     float predkoscPoruszania = 5.0f;
 
     // Start is called before the first frame update
@@ -28,10 +32,10 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Czy na ziemi? " + characterController.isGrounded);*/
 
-        float ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
-        float ruchLewoPrawo = Input.GetAxis("Horizontal");
+        ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
+        ruchLewoPrawo = Input.GetAxis("Horizontal") * predkoscPoruszania;
 
-        Vector3 ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
+        ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
         ruch = transform.rotation * ruch;
 
         characterController.Move(ruch * Time.deltaTime);
