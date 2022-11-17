@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
         float ruchLewoPrawo = Input.GetAxis("Horizontal");
 
         Vector3 ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
-        ruch = transform.position;
+        ruch = transform.rotation * ruch;
+
         characterController.Move(ruch * Time.deltaTime);
 
         //Debug.Log(ruch);
