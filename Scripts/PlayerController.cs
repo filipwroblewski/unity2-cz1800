@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController characterController;
 
+    float predkoscPoruszania = 5.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Czy na ziemi? " + characterController.isGrounded);*/
 
-        float ruchPrzodTyl = Input.GetAxis("Vertical");
+        float ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
         float ruchLewoPrawo = Input.GetAxis("Horizontal");
 
         Vector3 ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
