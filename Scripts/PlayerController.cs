@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     Vector3 ruch;
 
     float predkoscPoruszania = 5.0f;
+    float predkoscBiegania = 2.0f;
+    float aktualnaWysokoscSkoku = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,19 +37,34 @@ public class PlayerController : MonoBehaviour
         ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
         ruchLewoPrawo = Input.GetAxis("Horizontal") * predkoscPoruszania;
 
-        ruch = new Vector3(ruchLewoPrawo, 0, ruchPrzodTyl);
+        if (Input.GetKeyDown("left shift"))
+        {
+            // predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
+            predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
+        }
+        else if (Input.GetKeyUp("left shift"))
+        {
+            predkoscPoruszania = ruchPrzodTyl / predkoscBiegania;
+        }
+
+        // characterController.isGrounded
+        if (Input.GetButton("Jump"))
+        {
+            aktualnaWysokoscSkoku = 5.0f;
+        }
+
+        /*if (!characterController.isGrounded)
+        {
+            Debug.Log("aaa");
+        }*/
+        
+
+        ruch = new Vector3(ruchLewoPrawo, aktualnaWysokoscSkoku, ruchPrzodTyl);
         ruch = transform.rotation * ruch;
 
         characterController.Move(ruch * Time.deltaTime);
 
-        if (Input.GetKeyDown("left shift"))
-        {
-            Debug.Log("Chodzenie -> Bieganie");
-        }
-        else if (Input.GetKeyUp("left shift"))
-        {
-            Debug.Log("Bieganie -> Chodzenie");
-        }
+        
         
         
         
