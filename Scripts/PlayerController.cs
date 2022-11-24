@@ -40,6 +40,19 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(ruch * Time.deltaTime);
 
+        if (Input.GetKeyDown("left shift"))
+        {
+            Debug.Log("Chodzenie -> Bieganie");
+        }
+        else if (Input.GetKeyUp("left shift"))
+        {
+            Debug.Log("Bieganie -> Chodzenie");
+        }
+        
+        
+        
+
+
         //Debug.Log(ruch);
     }
 }
