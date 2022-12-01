@@ -56,8 +56,7 @@ public class PlayerController : MonoBehaviour
             aktualnaWysokoscSkoku = wysokoscSkoku;
         }else if (!characterController.isGrounded)
         {
-            // Debug.Log("Postac w powietrzu");
-            aktualnaWysokoscSkoku = Physics.gravity.y * Time.deltaTime + aktualnaWysokoscSkoku;
+            aktualnaWysokoscSkoku += Physics.gravity.y * Time.deltaTime; // aktualnaWysokoscSkoku = Physics.gravity.y * Time.deltaTime + aktualnaWysokoscSkoku;
         }
 
         ruch = new Vector3(ruchLewoPrawo, aktualnaWysokoscSkoku, ruchPrzodTyl);
