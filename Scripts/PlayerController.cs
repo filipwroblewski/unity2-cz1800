@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     float predkoscPoruszania = 5.0f;
     float predkoscBiegania = 2.0f;
     float aktualnaWysokoscSkoku = 0.0f;
+    float wysokoscSkoku = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
         ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
         ruchLewoPrawo = Input.GetAxis("Horizontal") * predkoscPoruszania;
 
+        // Sprint
         if (Input.GetKeyDown("left shift"))
         {
             // predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
@@ -48,15 +50,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // characterController.isGrounded
-        if (Input.GetButton("Jump"))
+        // and &&, or ||
+        if (Input.GetButton("Jump") && characterController.isGrounded)
         {
-            aktualnaWysokoscSkoku = 5.0f;
+            aktualnaWysokoscSkoku = wysokoscSkoku;
         }
+        
 
-        /*if (!characterController.isGrounded)
-        {
-            Debug.Log("aaa");
-        }*/
+        
         
 
         ruch = new Vector3(ruchLewoPrawo, aktualnaWysokoscSkoku, ruchPrzodTyl);
