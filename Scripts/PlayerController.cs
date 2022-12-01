@@ -54,11 +54,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && characterController.isGrounded)
         {
             aktualnaWysokoscSkoku = wysokoscSkoku;
+        }else if (!characterController.isGrounded)
+        {
+            Debug.Log("Postac w powietrzu");
         }
-        
-
-        
-        
 
         ruch = new Vector3(ruchLewoPrawo, aktualnaWysokoscSkoku, ruchPrzodTyl);
         ruch = transform.rotation * ruch;
