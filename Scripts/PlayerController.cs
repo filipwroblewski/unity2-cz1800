@@ -29,19 +29,13 @@ public class PlayerController : MonoBehaviour
 
     void klawiatura()
     {
-        /*Debug.Log("Skok: " + Input.GetButton("Jump"));
-        Debug.Log("Lewo/Prawo: " + Input.GetAxis("Horizontal"));
-        Debug.Log("Przod/Tyl: " + Input.GetAxis("Vertical"));
-
-        Debug.Log("Czy na ziemi? " + characterController.isGrounded);*/
-
         ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
         ruchLewoPrawo = Input.GetAxis("Horizontal") * predkoscPoruszania;
 
+        // Do poprawienia: Postac nie porusza sie po klikniecu shift na poczatku gry
         // Sprint
         if (Input.GetKeyDown("left shift"))
         {
-            // predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
             predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
         }
         else if (Input.GetKeyUp("left shift"))
@@ -49,7 +43,6 @@ public class PlayerController : MonoBehaviour
             predkoscPoruszania = ruchPrzodTyl / predkoscBiegania;
         }
 
-        // characterController.isGrounded
         // and &&, or ||
         if (Input.GetButton("Jump") && characterController.isGrounded)
         {
@@ -63,13 +56,5 @@ public class PlayerController : MonoBehaviour
         ruch = transform.rotation * ruch;
 
         characterController.Move(ruch * Time.deltaTime);
-
-        
-        
-        
-        
-
-
-        //Debug.Log(ruch);
     }
 }
