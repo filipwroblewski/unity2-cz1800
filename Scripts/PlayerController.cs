@@ -10,10 +10,17 @@ public class PlayerController : MonoBehaviour
     float ruchLewoPrawo;
     Vector3 ruch;
 
-    float predkoscPoruszania = 5.0f;
-    float predkoscBiegania = 2.0f;
-    float aktualnaWysokoscSkoku = 0.0f;
-    float wysokoscSkoku = 5.0f;
+    public float predkoscPoruszania = 5.0f;
+    public float predkoscBiegania = 2.0f;
+    public float aktualnaWysokoscSkoku = 0.0f;
+    public float wysokoscSkoku = 5.0f;
+
+    float myszPrawoLewo;
+
+    //public float czuloscMyszki = 3.0f;
+    public int czuloscMyszki = 3;
+    public float myszGoraDol = 0.0f;
+    public float myszZakresGoraDol = 90.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         klawiatura();
+        mysz();
     }
 
     void klawiatura()
@@ -56,5 +64,20 @@ public class PlayerController : MonoBehaviour
         ruch = transform.rotation * ruch;
 
         characterController.Move(ruch * Time.deltaTime);
+    }
+
+    void mysz()
+    {
+        // Debug.Log("Ruch prawo i lewo: " + Input.GetAxis("Mouse X"));
+        // Debug.Log("Ruch gora i dol: " + Input.GetAxis("Mouse Y"));
+        myszPrawoLewo = Input.GetAxis("Mouse X") * czuloscMyszki;
+        transform.Rotate(0, myszPrawoLewo, 0);
+
+        /*
+        myszGoraDol -= Input.GetAxis("Mouse Y") * czuloscMyszki;
+        myszGoraDol = Mathf.Clamp(myszGoraDol, -myszZakresGoraDol, myszZakresGoraDol);
+
+        Camera.main.transform.localRotation = Quaternion.Euler(myszGoraDol, 0, 0);
+        */
     }
 }
