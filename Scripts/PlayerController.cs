@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
 
     float myszPrawoLewo;
 
-    //public float czuloscMyszki = 3.0f;
-    public int czuloscMyszki = 3;
+    public float czuloscMyszki = 3.0f;
     public float myszGoraDol = 0.0f;
     public float myszZakresGoraDol = 90.0f;
 
@@ -73,11 +72,9 @@ public class PlayerController : MonoBehaviour
         myszPrawoLewo = Input.GetAxis("Mouse X") * czuloscMyszki;
         transform.Rotate(0, myszPrawoLewo, 0);
 
-        /*
         myszGoraDol -= Input.GetAxis("Mouse Y") * czuloscMyszki;
         myszGoraDol = Mathf.Clamp(myszGoraDol, -myszZakresGoraDol, myszZakresGoraDol);
 
         Camera.main.transform.localRotation = Quaternion.Euler(myszGoraDol, 0, 0);
-        */
     }
 }
