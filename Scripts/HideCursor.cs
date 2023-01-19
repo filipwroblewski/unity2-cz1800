@@ -14,21 +14,21 @@ public class HideCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int a = 1;
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (Cursor.visible)
+            if (true) // czy kursor jest widoczny
             {
-                Debug.Log("widac kursor");
+                // schowaj kursor
             }
-        }
-        else if (a == 2)
-        {
-            Debug.Log("a jest rowne 2");
-        }
-        else
-        {
-            Debug.Log("a nie jest rowne 1");
+            else
+            {
+                // pokaz kursor
+            }
+
+            // if Locked
+                // Confined
+            // else
+                // Locked
         }
     }
 }
