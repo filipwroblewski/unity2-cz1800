@@ -78,3 +78,4 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.localRotation = Quaternion.Euler(myszGoraDol, 0, 0);
     }
 }
+
