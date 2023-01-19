@@ -16,19 +16,27 @@ public class HideCursor : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (true) // czy kursor jest widoczny
+            if (Cursor.visible) // czy kursor jest widoczny
             {
-                // schowaj kursor
+                Debug.Log("schowaj kursor");
+                Cursor.visible = false;
             }
             else
             {
-                // pokaz kursor
+                Debug.Log("pokaz kursor");
+                Cursor.visible = true;
             }
 
-            // if Locked
-                // Confined
-            // else
-                // Locked
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Debug.Log("kursor Locked");
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                Debug.Log("kursor Confined");
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 }
