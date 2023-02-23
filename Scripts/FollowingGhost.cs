@@ -26,11 +26,22 @@ public class FollowingGhost : MonoBehaviour
         // obliczenie dystansu od gracza
         float distance = Vector3.Distance(enemy.position, player.position);
 
-        // jezeli Player bedzie w zasiegu wzorku Enemy i Enemy nie jest za blisko Player
-        if (true)
+
+
+        // v1
+        if (true) // jezeli Player bedzie w zasiegu wzorku Enemy i Enemy nie jest za blisko Player
         {
             Debug.Log("Teraz ide");
         }
-        
+
+        // v2
+        if (true) // jezeli Player bedzie w zasiegu wzorku Enemy
+        {
+            if (true) // Enemy nie jest za blisko Player
+            {
+                Debug.Log("Teraz ide");
+            }
+        }
+        // ------
     }
 }
