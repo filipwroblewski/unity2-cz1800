@@ -29,8 +29,20 @@ public class FollowingWithCollisions : MonoBehaviour
 
         if (distance < range && distance > closestRange) // jezeli Player bedzie w zasiegu wzorku Enemy i Enemy nie jest za blisko Player
         {
-            
+            Vector3 playerPosition = new Vector3(player.position.x, enemy.position.y, player.position.z);
+            enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), 4.0f * Time.deltaTime);
         }
+
+        // sprawdzenie czy postac jest na ziemi
+
+        // !enemyController.isGrounded
+        // enemyController.isGrounded == false
+        if (!enemyController.isGrounded)
+        {
+            // cos zrob
+            Debug.Log("");
+        }
+        
 
         Debug.Log(distance);
     }
