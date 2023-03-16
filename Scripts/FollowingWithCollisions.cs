@@ -13,6 +13,7 @@ public class FollowingWithCollisions : MonoBehaviour
 
     float turnSpeed = 4.0f; // predkosc obrotu
     float currentJumpHight = 0.0f; // aktualna wysokosc skoku
+    float movementSpeed = 2.0f; // predkosc ruchu Enemy
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +41,11 @@ public class FollowingWithCollisions : MonoBehaviour
         // sprawdzenie czy postac jest na ziemi
         if (!enemyController.isGrounded)
         {
-            // jestem w powietrzu wiec -> 
-            Debug.Log("cos zrob");
-            //currentJumpHight
+            currentJumpHight = currentJumpHight + Physics.gravity.y * Time.deltaTime;
         }
+
+        Vector3 movementVector = new Vector3(enemy.forward.x, currentJumpHight, enemy.forward.z);
+        enemyController.Move(movementVector * movementSpeed * Time.deltaTime);
         
 
         Debug.Log(distance);
