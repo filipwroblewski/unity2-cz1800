@@ -33,15 +33,14 @@ public class FollowingGhost : MonoBehaviour
             enemy.position += enemy.forward * 2.0f * Time.deltaTime; 
         }
         
-        
         // v2
-        if (distance < range) // jezeli Player bedzie w zasiegu wzorku Enemy
+        /*if (distance < range) // jezeli Player bedzie w zasiegu wzorku Enemy
         {
             if (distance > closestRange) // Enemy nie jest za blisko Player
             {
                 enemy.rotation = Quaternion.Slerp(enemy.rotation, Quaternion.LookRotation(player.position - enemy.position), 4.0f * Time.deltaTime);
                 enemy.position += enemy.forward * 2.0f * Time.deltaTime;
             }
-        }
+        }*/
     }
 }
