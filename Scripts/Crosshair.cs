@@ -4,18 +4,26 @@ public class Crosshair : MonoBehaviour
 {
     [SerializeField] Texture2D crosshairImg;
     Rect position;
+    [SerializeField] bool show = true;
     
     void Start()
     {
+        float halfWidth = (Screen.width - crosshairImg.width) / 2;
+        float halfHeight = (Screen.height - crosshairImg.height) / 2;
+
         position = new Rect(
-            Screen.width / 2,
-            Screen.height / 2,
-            crosshairImg.width,
-            crosshairImg.height);
+                halfWidth,
+                halfHeight,
+                crosshairImg.width,
+                crosshairImg.height
+            );
     }
 
     void OnGUI()
     {
-        GUI.DrawTexture(position, crosshairImg);
+        if (show)
+        {
+            GUI.DrawTexture(position, crosshairImg);
+        }
     }
 }
