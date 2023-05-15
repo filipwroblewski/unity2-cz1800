@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,7 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector3 ruch;
 
     public float predkoscPoruszania = 5.0f;
-    public float predkoscBiegania = 2.0f;
+    public float predkoscBiegania = 3.0f;
     public float aktualnaWysokoscSkoku = 0.0f;
     public float wysokoscSkoku = 5.0f;
 
@@ -21,13 +19,11 @@ public class PlayerController : MonoBehaviour
     public float myszGoraDol = 0.0f;
     public float myszZakresGoraDol = 90.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         klawiatura();
@@ -39,24 +35,22 @@ public class PlayerController : MonoBehaviour
         ruchPrzodTyl = Input.GetAxis("Vertical") * predkoscPoruszania;
         ruchLewoPrawo = Input.GetAxis("Horizontal") * predkoscPoruszania;
 
-        // Do poprawienia: Postac nie porusza sie po klikniecu shift na poczatku gry
         // Sprint
         if (Input.GetKeyDown("left shift"))
         {
-            predkoscPoruszania = ruchPrzodTyl * predkoscBiegania;
+            predkoscPoruszania += predkoscBiegania;
         }
         else if (Input.GetKeyUp("left shift"))
         {
-            predkoscPoruszania = ruchPrzodTyl / predkoscBiegania;
+            predkoscPoruszania -= predkoscBiegania;
         }
 
-        // and &&, or ||
         if (Input.GetButton("Jump") && characterController.isGrounded)
         {
             aktualnaWysokoscSkoku = wysokoscSkoku;
         }else if (!characterController.isGrounded)
         {
-            aktualnaWysokoscSkoku += Physics.gravity.y * Time.deltaTime; // aktualnaWysokoscSkoku = Physics.gravity.y * Time.deltaTime + aktualnaWysokoscSkoku;
+            aktualnaWysokoscSkoku += Physics.gravity.y * Time.deltaTime;
         }
 
         ruch = new Vector3(ruchLewoPrawo, aktualnaWysokoscSkoku, ruchPrzodTyl);
@@ -67,8 +61,6 @@ public class PlayerController : MonoBehaviour
 
     void mysz()
     {
-        // Debug.Log("Ruch prawo i lewo: " + Input.GetAxis("Mouse X"));
-        // Debug.Log("Ruch gora i dol: " + Input.GetAxis("Mouse Y"));
         myszPrawoLewo = Input.GetAxis("Mouse X") * czuloscMyszki;
         transform.Rotate(0, myszPrawoLewo, 0);
 
@@ -78,4 +70,3 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.localRotation = Quaternion.Euler(myszGoraDol, 0, 0);
     }
 }
-

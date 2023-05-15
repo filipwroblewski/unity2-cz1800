@@ -59,4 +59,17 @@ public class nowySkryptNaPoruszanie : MonoBehaviour
             enemy.rotation = Quaternion.Slerp(enemy.rotation, rotation, turnSpeed * Time.deltaTime);
         }
     }
+
+    bool isDead()
+    {
+        Health hp = gameObject.GetComponent<Health>();
+        if(hp != null)
+        {
+            return hp.isAlive();
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
