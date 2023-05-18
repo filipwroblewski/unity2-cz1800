@@ -45,7 +45,15 @@ public class nowySkryptNaPoruszanie : MonoBehaviour
             lookAtPlayer = true;
         }
 
-        lookAtMe();
+        if (!isDead())
+        {
+            lookAtMe();
+        }
+        else
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+        }
+
     }
 
     void lookAtMe()
@@ -65,7 +73,7 @@ public class nowySkryptNaPoruszanie : MonoBehaviour
         Health hp = gameObject.GetComponent<Health>();
         if(hp != null)
         {
-            return hp.isAlive();
+            return !hp.isAlive();
         }
         else
         {
