@@ -36,11 +36,11 @@ public class nowySkryptNaPoruszanie : MonoBehaviour
         lookAtPlayer = false;
 
         float distance = Vector3.Distance(enemy.position, playerXYZ);
-        if (distance <= range && distance > closestRange)
+        if (distance <= range && distance > closestRange && !isDead())
         {
             lookAtPlayer = true;
             enemy.position = Vector3.MoveTowards(enemy.position, playerXYZ, movementSpeed * Time.deltaTime);
-        }else if (distance <= closestRange)
+        }else if (distance <= closestRange && !isDead())
         {
             lookAtPlayer = true;
         }
