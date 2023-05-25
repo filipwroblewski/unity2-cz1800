@@ -8,6 +8,8 @@ public class Shooting : MonoBehaviour
     float delay = 1.0f;
     float dmg = 50.0f;
 
+    [SerializeField] GameObject bulletPrefab;
+
     float counter = 0.0f;
     
     // Update is called once per frame
@@ -29,14 +31,16 @@ public class Shooting : MonoBehaviour
             // sprawdzenie co zostalo trafione i czy jest w naszym range
             if(Physics.Raycast(ray, out hitInfo, range))
             {
-                // TODO: wczytanie pkt zrowia enemy
-                
-
                 GameObject go = hitInfo.collider.gameObject;
                 Debug.Log($"Trafione: { go.name }");
-                // TODO: wypisanie pkt zdrowia
 
                 hit(go);
+
+                if(bulletPrefab != null)
+                {
+                    Instantiate(bulletPrefab, hitInfo.point, Quaternion.identity);
+                }
+
 
             }
         }
